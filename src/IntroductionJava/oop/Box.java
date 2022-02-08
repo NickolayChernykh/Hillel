@@ -5,6 +5,7 @@ public class Box {
     private int length;
     private int width;
     private int height;
+    private Material material;
 
     public int volumeBox() {
         return length * width * height;
@@ -18,6 +19,7 @@ public class Box {
 
     public Box(int length, int width, int height, Material material) {
         this(length, width, height);
+        this.material = material;
     }
 
     public int getLength() {
@@ -49,6 +51,16 @@ public class Box {
         if (height > 0) {
             this.height = height;
         } else System.out.println("Высота должна быть положительным числом!!");
+    }
+
+    @Override
+    public String toString() {
+        return "Box{" +
+                "length=" + length +
+                ", width=" + width +
+                ", height=" + height +
+                ", material=" + material +
+                '}';
     }
 }
 
