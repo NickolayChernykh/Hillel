@@ -61,7 +61,7 @@ public class Primary {
         setNewBoxParams(1, 5, 5, 5, boxes);
         System.out.println();
         System.out.println("Замена параметров цветной коробки:");
-        setNewBoxParams(3, 10,10,10, colorBoxes);
+        setNewBoxParams(3, 10,10,10 , colorBoxes);
     }
 
     private static void setNewBoxParams(int i, int length, int width, int height, Box[] boxes) {
