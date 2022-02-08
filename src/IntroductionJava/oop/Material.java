@@ -22,8 +22,4 @@ public enum Material {
     public String getMaterial() {
         return material;
     }
-    @Override
-    public String toString() {
-        return material;
-    }
 }

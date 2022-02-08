@@ -52,11 +52,20 @@ public class Box {
             this.height = height;
         } else System.out.println("Высота должна быть положительным числом!!");
     }
+    public static void setNewBoxParams(int i, int length, int width, int height, Box[] boxes) {
+        int box = i + 1;
+        boxes[i].setLength(length);
+        boxes[i].setWidth(width);
+        boxes[i].setHeight(height);
+        System.out.println("Новая длинна коробки объекта №" + box + " = " + boxes[i].getLength());
+        System.out.println("Новая ширина коробки объекта №" + box + " = " + boxes[i].getWidth());
+        System.out.println("Новая высота коробки объекта №" + box + " = " + boxes[i].getHeight());
+        System.out.println("Новый объем коробки в объекта №" + box + " = " + boxes[i].volumeBox());
+    }
 
     @Override
     public String toString() {
-        return "Box{" +
-                "length=" + length +
+        return  "length=" + length +
                 ", width=" + width +
                 ", height=" + height +
                 ", material=" + material +
