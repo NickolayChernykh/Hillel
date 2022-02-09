@@ -14,6 +14,12 @@ public class Box {
 
     public Box(int length, int width, int height, Material material) {
         this.length = length;
+        if (length <= 0)
+            try {
+                int i = length / 0;
+            } catch (ArithmeticException aex) {
+                System.out.println("Таких коробок не бывает");
+            }
         this.width = width;
         this.height = height;
         this.material = material;
@@ -24,12 +30,9 @@ public class Box {
     }
 
     public void setLength(int length) {
-        if (length > 0) {
-            this.length = length;
-        } else System.out.println("Длина должна быть положительным числом!!");
-//    }
-
+        this.length = length;
     }
+
 
     public int getWidth() {
         return width;
