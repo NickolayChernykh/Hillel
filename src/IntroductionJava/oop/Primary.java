@@ -24,7 +24,7 @@ public class Primary {
                 case 2 -> material = Material.WOOD;
                 case 3 -> material = Material.SHEET_IRON;
             }
-            boxes[i] = new Box((i + 1), (i + 1), (i + 1), material);
+            boxes[i] = new Box((i + 1), (i + -2), (i + 1), material);
             System.out.printf(boxMsg, i, boxes[i].volumeBox(), boxes[i]);
         }
         System.out.println();
@@ -49,7 +49,7 @@ public class Primary {
                     color = Color.VIOLET;
                 }
             }
-            colorBoxes[i] = new ColorBox((i + 1) * 3, (i + 1) * 3, (i + 1) * 3, material, color);
+            colorBoxes[i] = new ColorBox((i ) * 3, (i + 1) * 3, (i + 1) * 3, material, color);
             System.out.printf(boxMsg1, i, colorBoxes[i].volumeBox(), colorBoxes[i]);
         }
     }
