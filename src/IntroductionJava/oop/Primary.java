@@ -24,10 +24,11 @@ public class Primary {
                 case 2 -> material = Material.WOOD;
                 case 3 -> material = Material.SHEET_IRON;
             }
-            boxes[i] = new Box((i + (-1)), (i + 1), (i + 1), material);
+            boxes[i] = new Box((i + 1), (i + 1), (i + 1), material);
             System.out.printf(boxMsg, i, boxes[i].volumeBox(), boxes[i]);
         }
         System.out.println();
+
         Box[] colorBoxes = new ColorBox[4];
         for (int i = 0; i < colorBoxes.length; i++) {
             switch (i) {
