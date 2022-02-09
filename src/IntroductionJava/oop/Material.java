@@ -6,6 +6,4 @@ public enum Material {
     WOOD,
     PLASTIC,
     SHEET_IRON
-
-
 }

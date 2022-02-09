@@ -27,6 +27,8 @@ public class Box {
         if (length > 0) {
             this.length = length;
         } else System.out.println("Длина должна быть положительным числом!!");
+//    }
+
     }
 
     public int getWidth() {
@@ -49,6 +51,7 @@ public class Box {
             this.height = height;
         } else System.out.println("Высота должна быть положительным числом!!");
     }
+
     public static void setNewBoxParams(int i, int length, int width, int height, Box[] boxes) {
         int box = i + 1;
         boxes[i].setLength(length);
@@ -70,7 +73,7 @@ public class Box {
 
     @Override
     public String toString() {
-        return  "длина = " + length +
+        return "длина = " + length +
                 ", ширина = " + width +
                 ", высота = " + height +
                 ", изготовлена из = " + material;
