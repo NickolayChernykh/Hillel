@@ -13,17 +13,30 @@ public class Box {
     }
 
     public Box(int length, int width, int height, Material material) {
-        this.length = length;
-        if (length <= 0)
-            try {
-                int i = length / 0;
-            } catch (ArithmeticException aex) {
-                System.out.println("Таких коробок не бывает");
-            }
+        try {
+            if (length <=0) throw new IllegalArgumentException();
+            this.length = length;
+
+        } catch (IllegalArgumentException ie){
+            System.out.println("Таких коробок не бывает");
+            return;
+        }
         this.width = width;
         this.height = height;
         this.material = material;
     }
+//    public Box(int length, int width, int height, Material material) {
+//        this.length = length;
+//        if (length <= 0)
+//            try {
+//                int i = length / 0;
+//            } catch (ArithmeticException aex) {
+//                System.out.println("Таких коробок не бывает");
+//            }
+//        this.width = width;
+//        this.height = height;
+//        this.material = material;
+//    }
 
     public int getLength() {
         return length;
