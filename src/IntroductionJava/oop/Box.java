@@ -8,17 +8,14 @@ public class Box {
     private Material material;
 
     public int volumeBox() {
-        return length * width * height;
-    }
-
-    public Box(int length, int width, int height) {
-        this.length = length;
-        this.width = width;
-        this.height = height;
+        int volume = length * width * height;
+        return volume;
     }
 
     public Box(int length, int width, int height, Material material) {
-        this(length, width, height);
+        this.length = length;
+        this.width = width;
+        this.height = height;
         this.material = material;
     }
 
@@ -63,13 +60,20 @@ public class Box {
         System.out.println("Новый объем коробки в объекта №" + box + " = " + boxes[i].volumeBox());
     }
 
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
     @Override
     public String toString() {
-        return  "length=" + length +
-                ", width=" + width +
-                ", height=" + height +
-                ", material=" + material +
-                '}';
+        return  "длина = " + length +
+                ", ширина = " + width +
+                ", высота = " + height +
+                ", изготовлена из = " + material;
     }
 }
 

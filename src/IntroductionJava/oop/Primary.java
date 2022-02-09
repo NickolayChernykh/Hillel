@@ -10,29 +10,30 @@ package IntroductionJava.oop;
  */
 
 public class Primary {
-    public static void main(String[] args) {
-        Box[] boxes = new Box[5];
-        for (int i = 0; i < boxes.length; i++) {
-            if (i == 0) {
-                boxes[i] = new Box(1, 2, 3);
-                System.out.printf("Объем коробки в объекте №%d равен %d%n", i, boxes[i].volumeBox());
-            } else boxes[i] = new Box(i * 2, i * 2, i * 2);
-            System.out.printf("Объем коробки в объекте №%d равен %d%n", i, boxes[i].volumeBox());
+    static String boxMsg = "Объем коробки в объекте №%d равен %d. Параметры - %s%n";
+    static String boxMsg1 = "Объем коробки в объекте №%d равен %d. Параметры - %s%n";
+    static Color color;
+    static Material material;
 
+    public static void main(String[] args) {
+        Box[] boxes = new Box[4];
+        for (int i = 0; i < boxes.length; i++) {
+            switch (i) {
+                case 0 -> material = Material.CARDBOARD;
+                case 1 -> material = Material.PLASTIC;
+                case 2 -> material = Material.WOOD;
+                case 3 -> material = Material.SHEET_IRON;
+            }
+            boxes[i] = new Box((i + 1), (i + 1), (i + 1), material);
+            System.out.printf(boxMsg, i, boxes[i].volumeBox(), boxes[i]);
         }
         System.out.println();
         Box[] colorBoxes = new ColorBox[4];
-        int count = 1;
-        for (int i = 0; i < colorBoxes.length; i++, count++) {
-            Color color = null;
-            Material material = null;
-            colorBoxes[i] = new ColorBox(count * 3, count * 3, count * 3, material, color);
+        for (int i = 0; i < colorBoxes.length; i++) {
             switch (i) {
                 case 0 -> {
                     material = Material.CARDBOARD;
-                    Material.CARDBOARD.setMaterial("гофрокартон");
-                    color = Color.INDETERMINATE;
-                    Color.INDETERMINATE.setColor("еще не определен");
+                    color = Color.RED;
                 }
                 case 1 -> {
                     material = Material.PLASTIC;
@@ -47,10 +48,8 @@ public class Primary {
                     color = Color.VIOLET;
                 }
             }
-
-            System.out.printf("Объем коробки в объекте №%d равен %d, материал - %s, цвет - %s%n",
-                    count, colorBoxes[i].volumeBox(), material, color);
+            colorBoxes[i] = new ColorBox((i + 1) * 3, (i + 1) * 3, (i + 1) * 3, material, color);
+            System.out.printf(boxMsg1, i, colorBoxes[i].volumeBox(), colorBoxes[i]);
         }
-
     }
 }

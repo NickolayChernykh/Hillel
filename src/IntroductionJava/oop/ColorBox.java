@@ -11,14 +11,16 @@ public class ColorBox extends Box{
         this.color = color;
     }
 
-    @Override
-    public int volumeBox() {
-        return super.volumeBox();
+    public Color getColor() {
+        return color;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
     @Override
     public String toString() {
-        return "Color" + super.toString() + " цвет " + color;
+        return super.toString() + ", цвет " + color;
     }
 }
