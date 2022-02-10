@@ -1,7 +1,12 @@
 package IntroductionJava.Sales.views;
 
 
+import IntroductionJava.Sales.models.Product;
+
 import java.util.Scanner;
+
+import static IntroductionJava.Sales.utils.Validator.*;
+
 
 // View
 public class SalesView {
@@ -13,30 +18,39 @@ public class SalesView {
     double price;
     Scanner scanner;
 
+
+
     // Здесь, создайте конструктор данного класса,
     // который в параметре содержит переменную типа модели.
+    public SalesView(Product model) {
 
+    }
 
     public void getInputs() {
 
         scanner = new Scanner(System.in);
 
         title = "Введите наименование товара: ";
-        // Здесь, реализуйте вывод сообщения о необходимсоти
-        // ввода соответствующего значения, валидацью значения
+        System.out.println(title);
+        validateName(scanner);
+        // Здесь, реализуйте вывод сообщения о необходимости
+        // ввода соответствующего значения, валидацию значения
         // через валидатор, установку валидного значения через модель.
 
 
         title = "Введите количество: ";
-        // Здесь, реализуйте вывод сообщения о необходимсоти
-        // ввода соответствующего значения, валидацью значения
+        System.out.println(title);
+        validateQuantityInput(scanner);
+        // Здесь, реализуйте вывод сообщения о необходимости
+        // ввода соответствующего значения, валидацию значения
         // через валидатор, установку валидного значения через модель.
 
         title = "Введите цену: ";
-        // Здесь, реализуйте вывод сообщения о необходимсоти
-        // ввода соответствующего значения, валидацью значения
+        validatePriceInput(scanner);
+        // Здесь, реализуйте вывод сообщения о необходимости
+        // ввода соответствующего значения, валидацию значения
         // через валидатор, установку валидного значения через модель.
-
+        System.out.println(title);
         scanner.close();
     }
 
