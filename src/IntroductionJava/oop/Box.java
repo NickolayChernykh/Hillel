@@ -8,23 +8,14 @@ public class Box {
     private Material material;
 
     public int volumeBox() {
-        int volume = length * width * height;
-        return volume;
+        return length * width * height;
     }
 
     public Box(int length, int width, int height, Material material) {
-        boolean isValid = false;
         if (length <= 0 || height <= 0 || width <= 0) {
-            isValid = true;
+            throw new IllegalArgumentException();
         }
-        try {
-            if (isValid) throw new IllegalArgumentException();
-            this.length = length;
-
-        } catch (IllegalArgumentException ie) {
-            System.out.println("Таких коробок не бывает");
-            return;
-        }
+        this.length = length;
         this.width = width;
         this.height = height;
         this.material = material;

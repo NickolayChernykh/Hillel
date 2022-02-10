@@ -1,12 +1,24 @@
 package IntroductionJava.oop;
 
 
-/*// ДЗ №13
- * Для класса Box из предыдущих домашек добавить дочерний класс ColorBox и вынести в него свойство color,
- * а из класса Box это свойство убрать.
- * Все методы для работы с этим свойством тоже перенести из класса Box в класс ColorBox.
- * Свойства color в классе ColorBox и material в Box переделать на Enum'ы
- * (создать перечисления для цветов и материалов и задать хотя бы по несколько возможных значений)
+/*// ДЗ №14
+ * Для классов Box и ColorBox из предыдущей домашки переопределить метод toString класса Object,
+ * в котором в реализации класса Box возвращать информацию о длине, ширине и высоте, а также материала коробки,
+ * а для класса ColorBox - всю ту же информации плюс информацию о цвете коробки.
+ * Добавить в конструктор класса Box генерацию исключения если хоть одна из сторон была задана
+ * неверно (меньше либо равна нулю) и обрабатывать это исключение в месте создания экземпляра
+ * коробки (как Box так и ColorBox).
+ * Также создать класс Склад (Warehouse, например), который будет в себе содержать массив коробок
+ * (именно базовый тип коробок - Box) и количество коробок, которые уже добавлены в этот массив.
+ * Массив создавать в конструкторе этого класса (размер массива принимать как параметр конструктора).
+ * Реализовать метод в этом классе для добавления коробки в массив (тип брать опять же базовый - Box),
+ * предусмотреть валидацию - проверять, можно ли ещё добавить в массив коробку,
+ * количество добавленных коробок не должно превышать длину массива.
+ * Также переопределить метод toString для этого класса - который будет возвращать
+ * информацию о всех коробках, которые хранит в себе склад.
+ * В методе main создать экземпляр класса Склад (задать его вместимость с помощью конструктора).
+ * Заполнить склад коробками (разными - как экземплярами Box, так и ColorBox) и
+ * вывести информацию о складе (вызвать метод склада toString).
  */
 
 public class Primary {
@@ -24,8 +36,12 @@ public class Primary {
                 case 2 -> material = Material.WOOD;
                 case 3 -> material = Material.SHEET_IRON;
             }
-            boxes[i] = new Box((i + 1), (i + -2), (i + 1), material);
-            System.out.printf(boxMsg, i, boxes[i].volumeBox(), boxes[i]);
+            try {
+                boxes[i] = new Box((i + 1), ((i + 1) - 1), (i - 1), material);
+                System.out.printf(boxMsg, i, boxes[i].volumeBox(), boxes[i]);
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println("Один из параметров коробки № " + i + " меньше или равен \"0\"!");
+            }
         }
         System.out.println();
 
@@ -49,8 +65,24 @@ public class Primary {
                     color = Color.VIOLET;
                 }
             }
-            colorBoxes[i] = new ColorBox((i ) * 3, (i + 1) * 3, (i + 1) * 3, material, color);
-            System.out.printf(boxMsg1, i, colorBoxes[i].volumeBox(), colorBoxes[i]);
+            try {
+                colorBoxes[i] = new ColorBox((i) * 3, (i + 1) * 3, (i + 1) * 3, material, color);
+                System.out.printf(boxMsg1, i, colorBoxes[i].volumeBox(), colorBoxes[i]);
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println("Один из параметров коробки № " + i + " меньше или равен \"0\"!");
+            }
+
         }
+        Warehouse warehouse = new Warehouse(5);
+        System.out.println();
+        warehouse.addBox(boxes[3], -1);
+        warehouse.addBox(colorBoxes[2], 0);
+        warehouse.addBox(boxes[3], 1);
+
+
+        System.out.println();
+        System.out.println(warehouse);
+        System.out.println("Количество коробок на складе " + Warehouse.quantityBox);
+
     }
 }

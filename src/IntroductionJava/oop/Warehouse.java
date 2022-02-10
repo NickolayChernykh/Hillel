@@ -1,32 +1,40 @@
 package IntroductionJava.oop;
 
-import java.util.Arrays;
 
 /**
  * Created by Chernykh on 08.02.2022
  */
 public class Warehouse {
-    private int [] arrayBox;
-    private int quantityBox;
-    private int sizeBoxArray;
+    private  Box[] arrayBox;
+    private final int sizeBoxArray;
+    public static int quantityBox;
 
-    public int[] getArrayBox() {
-        return arrayBox;
-    }
 
     public Warehouse(int sizeBoxArray) {
-        arrayBox = new int[sizeBoxArray];
-        for (int i = 0; i < sizeBoxArray; i++) {
-            arrayBox[i] = 0;
-        }
-    }
-    private boolean indexOk(int index){
-        if (index >= 0 &&  index < sizeBoxArray ) return true;
-        return false;
+        arrayBox = new Box[this.sizeBoxArray = sizeBoxArray];
     }
 
-    public String toString(Warehouse warehouse) {
-        return Arrays.toString(arrayBox);
+    public void addBox(Box box, int whArrayIndex) {
+        if (indexOk(whArrayIndex)) {
+            arrayBox[whArrayIndex] = box;
+        } else System.out.println("Невозможно добавить коробку на склад, выход за пределы размера склада.");
+    }
+
+
+    public boolean indexOk(int indexBox) {
+        return indexBox >= 0 && indexBox < sizeBoxArray;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[ ");
+        for (Box str : arrayBox) {
+            if (str != null) {
+                quantityBox++;
+                sb.append(str).append(" |||| ");
+            }
+        }
+        return sb.delete(sb.length() - 1, sb.length()).append(" ]").toString();
     }
 }
 
