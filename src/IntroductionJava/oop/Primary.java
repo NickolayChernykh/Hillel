@@ -37,7 +37,7 @@ public class Primary {
                 case 3 -> material = Material.SHEET_IRON;
             }
             try {
-                boxes[i] = new Box((i + 1), ((i + 1) - 1), (i - 1), material);
+                boxes[i] = new Box((i + 1), (i + 1), (i + 1), material);
                 System.out.printf(boxMsg, i, boxes[i].volumeBox(), boxes[i]);
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println("Один из параметров коробки № " + i + " меньше или равен \"0\"!");
@@ -71,18 +71,27 @@ public class Primary {
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println("Один из параметров коробки № " + i + " меньше или равен \"0\"!");
             }
-
         }
         Warehouse warehouse = new Warehouse(5);
         System.out.println();
-        warehouse.addBox(boxes[3], -1);
-        warehouse.addBox(colorBoxes[2], 0);
-        warehouse.addBox(boxes[3], 1);
 
+        // Попытка выйти за размер склада или добавить коробку с отсутствующим размером
+        warehouse.setBox(boxes[3], -1);
+        warehouse.setBox(colorBoxes[2], 5);
+        warehouse.addBox(colorBoxes[0]);
+
+        // Добавление на склад(addBox - в первую свободную ячейку, setBox - принудительно в указанную ячейку)
+        warehouse.addBox(colorBoxes[1]);
+        warehouse.addBox(boxes[0]);
+        warehouse.setBox(colorBoxes[2], 2);
+        warehouse.setBox(boxes[3], 4);
+        warehouse.addBox(boxes[2]);
+
+        // Попытка добавить больше коробок
+        warehouse.addBox(boxes[2]);
 
         System.out.println();
         System.out.println(warehouse);
-        System.out.println("Количество коробок на складе " + Warehouse.quantityBox);
 
     }
 }
